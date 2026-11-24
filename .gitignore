@@ -1,3 +1,6 @@
 # Local Netlify folder
 .netlify
 videos/
+.DS_Store
+node_modules/
+preview-*.png
