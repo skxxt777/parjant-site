@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PJ & K — Content That Sells</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-snap-type: y proximity; scroll-padding-top: 4rem; }
+    .clients-section, .testi-section, .insights-section, .brands-section, .lifestyle-section,
+    .product-section, .food-section, .events-section, .service-section,
+    .map-section, footer { scroll-snap-align: start; }
+
+    :root {
+      --black:  #0d0d0d;
+      --dark:   #141414;
+      --cream:  #F0EBD8;
+      --white:  #FAFAF5;
+      --orange: #C9973C;
+      --pink:   #D41E5C;
+      --grey:   #888;
+      --page-bg: #EDE8DA;
+      --font-bold: 'Anton', Impact, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--page-bg);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ───────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem clamp(5rem, 12vw, 12rem);
+    }
+    .nav-logo {
+      font-family: var(--font-bold);
+      font-size: 1.4rem;
+      letter-spacing: .03em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .55rem 1.3rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── HERO ──────────────────────────────────────── */
+    .hero {
+      min-height: 85vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 5rem clamp(5rem, 12vw, 12rem);
+      background: url('images/8fb9738b-43d5-4030-96dd-8d4dd4c4ce82.png') center center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.55) 100%);
+      pointer-events: none;
+    }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: var(--font-bold);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: .92;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span { color: var(--orange); }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.6;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-flags { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 1.5rem 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-stat-num {
+      font-family: var(--font-bold);
+      font-size: 2.6rem;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+      margin-top: .2rem;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .9rem 2.5rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      transition: transform .2s, opacity .2s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); opacity: .9; }
+    .hero-cta-ghost {
+      background: transparent;
+      color: var(--orange);
+      border: 2px solid var(--orange);
+    }
+    .hero-cta-ghost:hover { opacity: .75; }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      align-items: center;
+    }
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-photo {
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 1/1;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #2a1a0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      border: 2px solid rgba(240,74,0,0.3);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── SECTION SHELL ────────────────────────────── */
+    section { padding: 4rem clamp(5rem, 12vw, 12rem); }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: var(--font-bold);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-transform: uppercase;
+      line-height: .95;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── VIDEO SCROLL WRAP ───────────────────────── */
+    .video-scroll-wrap {
+      position: relative;
+    }
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(0,0,0,.18);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .15s, box-shadow .15s, opacity .2s;
+    }
+    .scroll-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 4px 22px rgba(0,0,0,.26); }
+    .scroll-btn svg { width: 18px; height: 18px; fill: none; stroke: #333; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .scroll-btn.prev { left: -23px; }
+    .scroll-btn.next { right: -23px; }
+
+    /* ── VIDEO GRID ───────────────────────────────── */
+    .video-grid {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .video-grid::-webkit-scrollbar { display: none; }
+    .video-card {
+      flex: 0 0 auto;
+      width: calc(25% - .75rem);
+      min-width: 180px;
+      scroll-snap-align: start;
+      position: relative;
+      border-radius: .75rem;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      background: #1e1e1e;
+      cursor: pointer;
+    }
+    .video-card video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(12px) brightness(.6);
+      transform: scale(1.06);
+      transition: filter .7s ease, transform .7s ease, opacity .3s;
+    }
+    .video-card.in-view video {
+      filter: blur(0) brightness(1);
+      transform: scale(1);
+    }
+    .video-card .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 50%, transparent 100%);
+      z-index: 2;
+      transition: opacity .3s;
+    }
+    .video-card:hover .card-overlay { opacity: .5; }
+    .card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: .85rem;
+    }
+    .card-views {
+      font-family: var(--font-bold);
+      font-size: 1.5rem;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,.6);
+    }
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+      margin-top: .25rem;
+    }
+    .card-badge {
+      position: absolute;
+      top: .65rem;
+      left: .65rem;
+      z-index: 3;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: #fff;
+      padding: .18rem .55rem;
+      border-radius: 2rem;
+    }
+    /* play icon shown on hover */
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%) scale(.8);
+      z-index: 4;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(6px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .25s, transform .25s;
+      pointer-events: none;
+    }
+    .play-icon svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+    .video-card:hover .play-icon { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+
+    /* ── VIDEO CONTROL BUTTONS ─────────────────────── */
+    .vid-ctrl-btns {
+      position: absolute;
+      top: .45rem;
+      right: .45rem;
+      z-index: 5;
+      display: flex;
+      gap: .28rem;
+    }
+    .vid-ctrl-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      opacity: 0;
+      transition: background .15s, opacity .2s;
+    }
+    .vid-ctrl-btn svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+    .video-card:hover .vid-ctrl-btn { opacity: 1; }
+    .vid-ctrl-btn:hover { background: rgba(0,0,0,.85); }
+    .vid-ctrl-btn.unmuted { opacity: 1; background: var(--orange); }
+    .vid-ctrl-btn.unmuted:hover { background: var(--orange); filter: brightness(1.1); }
+
+    /* ── BRANDS SECTION ───────────────────────────── */
+    .brands-section { background: #E8E3D5; }
+    .brands-section .section-title { color: var(--black); }
+
+    /* ── STATS SECTION ────────────────────────────── */
+    .stats-section {
+      background: var(--cream);
+      color: var(--black);
+    }
+    .stats-section .section-label { color: var(--orange); }
+    .stats-section .section-title { color: var(--black); }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: 48fr 52fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .stats-right > p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(0,0,0,.6);
+      max-width: 420px;
+      margin-bottom: 1.5rem;
+    }
+    .stats-video {
+      position: relative;
+      width: 100%;
+      border-radius: 1rem;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      max-height: 520px;
+      background: #000;
+    }
+    .stats-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .stat-list { display: flex; flex-direction: column; gap: 0; }
+    .stat-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      align-items: center;
+      padding: .85rem 0;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      gap: 1rem;
+    }
+    .stat-row:first-child { border-top: 1px solid rgba(0,0,0,.1); }
+    .stat-num {
+      font-family: var(--font-bold);
+      font-size: 2.6rem;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .stat-desc strong {
+      display: block;
+      font-size: .82rem;
+      font-weight: 700;
+      color: rgba(0,0,0,.8);
+      line-height: 1.3;
+    }
+    .stat-desc span {
+      font-size: .78rem;
+      color: rgba(0,0,0,.45);
+      line-height: 1.4;
+    }
+    /* ── CLIENTS MARQUEE ─────────────────────────── */
+    .clients-section {
+      background: #ffffff;
+      padding: 4rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .clients-section::before,
+    .clients-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: clamp(4rem, 10vw, 10rem);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .clients-section::before {
+      left: 0;
+      background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+    }
+    .clients-section::after {
+      right: 0;
+      background: linear-gradient(to left, #ffffff 0%, transparent 100%);
+    }
+    .clients-header {
+      text-align: center;
+      padding: 0 clamp(5rem, 12vw, 12rem) 2.5rem;
+    }
+    .clients-header .section-label { color: rgba(0,0,0,.38); }
+    .clients-header .section-title { color: var(--black); margin-bottom: 0; }
+
+    @keyframes marquee-fwd { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+    .marquee-row { overflow: hidden; margin-bottom: 1rem; }
+    .marquee-row:last-child { margin-bottom: 0; }
+    .marquee-inner {
+      display: flex;
+      width: max-content;
+      gap: 1rem;
+      padding: .25rem 0;
+    }
+    .marquee-fwd { animation: marquee-fwd 35s linear infinite; }
+    .marquee-rev { animation: marquee-rev 35s linear infinite; }
+
+    .logo-card {
+      background: transparent;
+      border-radius: .85rem;
+      padding: 1.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      min-width: 190px;
+      height: 110px;
+      flex-shrink: 0;
+    }
+    .logo-card img {
+      max-height: 48px;
+      max-width: 130px;
+      object-fit: contain;
+    }
+    .logo-card-name {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.55);
+    }
+    .logo-card-text {
+      font-family: var(--font-bold);
+      font-size: .9rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    /* ── LIFESTYLE section ────────────────────────── */
+    .lifestyle-section { background: var(--page-bg); }
+
+    /* ── PRODUCT REVIEWS ──────────────────────────── */
+    .product-section { background: #E8E3D5; }
+
+    /* ── FOOD REVIEWS ─────────────────────────────── */
+    .food-section { background: var(--page-bg); }
+
+    /* ── EVENTS ───────────────────────────────────── */
+    .events-section { background: #E8E3D5; }
+
+    /* ── SERVICE FEATURES ─────────────────────────── */
+    .service-section { background: var(--page-bg); }
+
+    /* ── MAP SECTION ──────────────────────────────── */
+    .map-section {
+      background: var(--orange);
+      padding: 4rem 2.5rem;
+    }
+    .map-section .section-title { color: var(--cream); }
+    .map-section .section-label { color: rgba(255,255,255,.6); }
+    #restaurant-map {
+      height: 480px;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .map-legend {
+      font-size: .75rem;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: inline-block;
+      margin-right: .35rem;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-top: 1rem;
+    }
+    .tag {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 2rem;
+      padding: .28rem .85rem;
+    }
+    .tag-more {
+      font-size: .72rem;
+      font-weight: 700;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.55);
+      border-radius: 2rem;
+      padding: .28rem .85rem;
+    }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: #ffffff;
+      padding: 4rem 2.5rem 2rem;
+      border-top: 1px solid rgba(0,0,0,.08);
+      color: var(--black);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-col h4 {
+      font-family: var(--font-bold);
+      font-size: 2rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col a {
+      font-size: .8rem;
+      color: rgba(0,0,0,.45);
+      line-height: 1.9;
+      display: block;
+      text-decoration: none;
+    }
+    .footer-col a:hover { color: var(--black); }
+    .footer-bleed {
+      font-family: var(--font-bold);
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      line-height: .88;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.06);
+      letter-spacing: .04em;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+
+    /* ── Testimonials ─────────────────────────────────── */
+    .testi-section { background: #E8E3D5; }
+    .testi-section .section-label { color: var(--orange); }
+    .testi-section .section-title { color: var(--black); margin-bottom: 2.5rem; }
+    .testi-cards-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .testi-img-card {
+      flex: 1;
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(0,0,0,.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .testi-stars { color: var(--orange); font-size: 1rem; letter-spacing: .1em; margin-bottom: 1rem; }
+    .testi-screenshot {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: .5rem;
+      margin-top: auto;
+    }
+    /* Performer bar */
+    .testi-performer {
+      background: #fff; border-radius: 1.25rem;
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; gap: 2rem;
+      border: 1px solid rgba(0,0,0,.08); flex-wrap: wrap;
+    }
+    .testi-perf-info { flex: 0 0 auto; }
+    .testi-perf-label { font-size: .62rem; color: var(--orange); text-transform: uppercase; letter-spacing: .15em; margin-bottom: .2rem; }
+    .testi-perf-name { font-family: var(--font-bold); font-size: 2rem; color: var(--black); line-height: 1.1; }
+    .testi-perf-loc { font-size: .72rem; color: rgba(0,0,0,.4); margin-top: .15rem; }
+    .testi-perf-stats { display: flex; gap: .75rem; flex: 1; flex-wrap: wrap; }
+    .testi-perf-stat {
+      background: transparent; border: 1.5px solid var(--orange); border-radius: .6rem;
+      padding: .65rem 1rem; text-align: center; flex: 1; min-width: 70px;
+    }
+    .testi-perf-num { font-family: var(--font-bold); font-size: 1.8rem; color: var(--orange); }
+    .testi-perf-lbl { font-size: .58rem; color: rgba(0,0,0,.4); text-transform: uppercase; letter-spacing: .1em; margin-top: .1rem; }
+
+    /* ── Insights section ───────────────────────────── */
+    .insights-section { background: var(--black); }
+    .insights-section .section-label { color: var(--orange); }
+    .insights-section .section-title { color: #fff; margin-bottom: .5rem; }
+    .insights-period { font-size: .75rem; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 2.5rem; }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .insight-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .insight-icon { font-size: 1.2rem; margin-bottom: .25rem; }
+    .insight-num {
+      font-family: var(--font-bold);
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      color: var(--orange);
+      line-height: 1;
+    }
+    .insight-label { font-size: .72rem; color: rgba(255,255,255,.75); text-transform: uppercase; letter-spacing: .12em; }
+    .insight-sub { font-size: .68rem; color: rgba(255,255,255,.45); margin-top: .2rem; }
+    /* Bar chart */
+    .insights-chart { margin-top: .5rem; margin-bottom: 2rem; }
+    .chart-bar-track {
+      width: 100%;
+      height: 18px;
+      background: rgba(255,255,255,.1);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .chart-bar {
+      height: 100%;
+      width: 0;
+      background: #0866FF;
+      border-radius: 99px;
+      transition: width 1.4s cubic-bezier(.16, 1, .3, 1);
+    }
+    .chart-bar-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .6rem;
+    }
+    .chart-lbl { font-size: .62rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .08em; }
+    .chart-val { font-family: var(--font-bold); font-size: .85rem; color: #fff; }
+    .insights-chart.animated .chart-bar { width: 100%; }
+    .insights-sources {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .insight-source-tag {
+      font-size: .65rem;
+      color: rgba(255,255,255,.5);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 2rem;
+      padding: .3rem .75rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    /* ── Footer inquiry form ─────────────────────────── */
+    .footer-grid { grid-template-columns: repeat(3, 1fr) 2fr; }
+    .footer-form { display: flex; flex-direction: column; gap: .5rem; }
+    .footer-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .footer-form input,
+    .footer-form textarea,
+    .footer-form select {
+      width: 100%; background: rgba(0,0,0,.05); border: 1px solid rgba(0,0,0,.12);
+      border-radius: .5rem; padding: .58rem .85rem; font-size: .78rem;
+      font-family: var(--font-body); color: var(--black); resize: vertical;
+    }
+    .footer-form input::placeholder,
+    .footer-form textarea::placeholder { color: rgba(0,0,0,.35); }
+    .footer-form input:focus,
+    .footer-form textarea:focus { outline: 2px solid var(--orange); border-color: transparent; }
+    .footer-form textarea { min-height: 80px; }
+    .footer-form-btn {
+      align-self: flex-start;
+      background: var(--orange); color: #fff;
+      font-family: var(--font-body); font-weight: 400; font-size: .82rem; letter-spacing: .1em;
+      text-transform: uppercase; padding: .65rem 1.75rem; border-radius: 2rem; border: none;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .footer-form-btn:hover { opacity: .85; }
+
+    /* ── Scroll fade-up (JS adds .js-ready to body before activating) ── */
+    body.js-ready .fade-up { opacity: 0; transform: translateY(30px); transition: opacity .55s ease, transform .55s ease; }
+    body.js-ready .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ───────────────────────────────── */
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      nav    { padding: 1rem 2rem; }
+      section { padding: 3.5rem 2rem; }
+      .hero  { padding: 4rem 2rem; gap: 2.5rem; }
+      .map-section { padding: 3.5rem 2rem; }
+      footer { padding: 3.5rem 2rem 2rem; }
+      .stats-inner { gap: 2.5rem; }
+      .video-card { width: calc(33.333% - .67rem); }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero::before { background: linear-gradient(135deg, rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.80) 100%); }
+
+      /* ── Global padding ── */
+      section { padding: 2.5rem 1.25rem; }
+      nav     { padding: .85rem 1.25rem; }
+      .map-section { padding: 2.5rem 1.25rem; }
+      footer  { padding: 2.5rem 1.25rem 1.5rem; }
+
+      /* ── Nav: hide links, keep logo + CTA ── */
+      .nav-links { display: none; }
+      .nav-cta   { font-size: .72rem; padding: .4rem .9rem; }
+
+      /* ── Hero ── */
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 3.5rem 1.25rem 2.5rem;
+        background-position: left center;
+      }
+      .hero-right { display: flex; }
+      .hero-photo { max-width: 100%; max-height: 340px; aspect-ratio: 1/1; }
+      .hero-title { font-size: clamp(2.6rem, 13vw, 4rem); }
+      .hero-sub   { font-size: .9rem; }
+      .hero-stats { grid-template-columns: repeat(2, auto); gap: .85rem 2rem; }
+      .hero-cta-row { flex-direction: column; }
+      .hero-cta   { width: 100%; text-align: center; }
+
+      /* ── Stats section ── */
+      .stats-inner {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 2rem;
+      }
+      .stats-video { max-height: 400px; }
+      .stat-num    { font-size: 2rem; }
+
+      /* ── Section titles ── */
+      .section-title { font-size: clamp(1.8rem, 8vw, 2.5rem); margin-bottom: 1.5rem; }
+
+      /* ── Video scroll: show ~1.5 cards on mobile ── */
+      .video-card { width: 72vw; min-width: 0; }
+      .scroll-btn { display: none; }
+
+      /* ── Marquee cards ── */
+      .logo-card { min-width: 140px; height: 90px; padding: .8rem 1.2rem; }
+      .logo-card img { max-height: 38px; max-width: 100px; }
+      .clients-header { padding: 0 1.25rem 2rem; }
+
+      /* ── Map ── */
+      #restaurant-map { height: 320px; }
+
+      /* ── Testimonials ── */
+      .testi-cards-row { flex-direction: column; }
+      .testi-img-card { padding: 1.25rem; }
+      .testi-performer { gap: 1rem; padding: 1.25rem; }
+      .testi-perf-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+      .testi-perf-stat { min-width: unset; padding: .6rem .5rem; }
+      .testi-perf-num { font-size: 1.4rem; }
+      .testi-perf-lbl { font-size: .55rem; }
+      .insights-grid { grid-template-columns: 1fr; }
+
+      /* ── Footer ── */
+      .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+      .footer-form-row { grid-template-columns: 1fr; }
+      .footer-bleed { font-size: clamp(1.8rem, 10vw, 3rem); }
+
+      /* ── Scroll arrows hidden on touch ── */
+      @media (hover: none) {
+        .scroll-btn { display: none; }
+      }
+    }
+  </style>
+
+  <!-- Leaflet for map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">Parjanttt <span style="font-size:1.4em;line-height:1;letter-spacing:0">+</span> K</div>
+  <ul class="nav-links">
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#lifestyle">Lifestyle</a></li>
+    <li><a href="#food">Food</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#map">Clients</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Work With Us</a>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left fade-up">
+    <div class="hero-eyebrow">Los Angeles & Orange County</div>
+    <div class="hero-flags">🇺🇸 🇹🇭 🇻🇳</div>
+    <h1 class="hero-title">100+ Brands<br>Trust Us to<br><span>Show Up.</span></h1>
+    <p class="hero-sub">We're Parjant & Kiet — a husband-and-wife UGC duo specializing in short-form food content that converts viewers into customers.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">160K+</div>
+        <div class="hero-stat-label">Combined Following</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">2.2M+</div>
+        <div class="hero-stat-label">Recent Post Views</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">30+</div>
+        <div class="hero-stat-label">Brand Deals</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Platforms</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">OC/LA</div>
+        <div class="hero-stat-label">Base Location</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">UGC</div>
+        <div class="hero-stat-label">Specialty</div>
+      </div>
+    </div>
+    <div class="hero-cta-row">
+      <a href="#contact" class="hero-cta">Work With Us</a>
+      <a href="#brands" class="hero-cta hero-cta-ghost">See Work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo"><img src="images/profimg.jpg" alt="Parjant & Kiet"></div>
+  </div>
+</section>
+
+<!-- ══ STATS ═════════════════════════════════════════════════ -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-left fade-up">
+      <div class="stats-video">
+        <video src="videos/brands-1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      </div>
+    </div>
+    <div class="stats-right fade-up">
+      <div class="section-label">Why Us</div>
+      <h2 class="section-title">It's All About<br>Your Brand.</h2>
+      <p>Parjant & Kiet — a husband-and-wife duo creating raw, authentic short-form video for restaurants and food brands across LA, Orange County, and beyond.</p>
+      <div class="stat-list">
+        <div class="stat-row">
+          <div class="stat-num">160K+</div>
+          <div class="stat-desc"><strong>Combined Followers</strong><span>Across Instagram, Facebook, TikTok, YouTube</span></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">2.2M+</div>
+          <div class="stat-desc"><strong>Video Views</strong><span>Recent posts alone</span></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">100+</div>
+          <div class="stat-desc"><strong>Brand &amp; Restaurant Deals</strong><span>From local spots to national brands</span></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">2M+</div>
+          <div class="stat-desc"><strong>Top Post Views</strong><span>Single video, organic reach</span></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">6</div>
+          <div class="stat-desc"><strong>Active Accounts</strong><span>FB · IG · TikTok · YouTube</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLIENTS MARQUEE ═══════════════════════════════════════ -->
+<section class="clients-section">
+  <div class="clients-header">
+    <div class="section-label">Some of the brands we've partnered with</div>
+    <h2 class="section-title"><span style="color:var(--orange)">100<span style="font-size:1.3em;line-height:1">+</span></span> Brand &amp; Restaurant Deals</h2>
+  </div>
+
+  <!-- Row 1 — scrolls left -->
+  <div class="marquee-row">
+    <div class="marquee-inner marquee-fwd">
+      <!-- set A -->
+      <div class="logo-card"><img src="images/logos/tapatio.png" alt="Tapatio"><div class="logo-card-name">Tapatio</div></div>
+      <div class="logo-card"><img src="images/logos/chin-su.png" alt="Chin-Su"><div class="logo-card-name">Chin-Su</div></div>
+      <div class="logo-card"><img src="images/logos/universal%20yums.png" alt="Universal Yums"><div class="logo-card-name">Universal Yums</div></div>
+      <div class="logo-card"><img src="images/logos/aunara.png" alt="Aunara"><div class="logo-card-name">Aunara</div></div>
+      <div class="logo-card"><img src="images/logos/hironori.png" alt="HiroNori"><div class="logo-card-name">HiroNori</div></div>
+      <div class="logo-card"><img src="images/logos/eggbred.png" alt="EggBred"><div class="logo-card-name">EggBred</div></div>
+      <div class="logo-card"><img src="images/logos/broken-yolk.png" alt="Broken Yolk"><div class="logo-card-name">Broken Yolk</div></div>
+      <div class="logo-card"><img src="images/logos/hisense.png" alt="Hisense"><div class="logo-card-name">Hisense</div></div>
+      <div class="logo-card"><img src="images/logos/ez-bombs.png" alt="EZ Bombs"><div class="logo-card-name">EZ Bombs</div></div>
+      <div class="logo-card"><img src="images/logos/wagyu-factory.png" alt="Wagyu Factory"><div class="logo-card-name">Wagyu Factory</div></div>
+      <div class="logo-card"><img src="images/logos/ygf.png" alt="YGF Malatang"><div class="logo-card-name">YGF Malatang</div></div>
+      <div class="logo-card"><img src="images/logos/thainewyear.png" alt="Thai New Year LA"><div class="logo-card-name">Thai New Year LA</div></div>
+      <div class="logo-card"><img src="images/logos/royalthaiconsulate.png" alt="Royal Thai Consulate"><div class="logo-card-name">Royal Thai Consulate</div></div>
+      <div class="logo-card"><img src="images/logos/grab.webp" alt="Grab Thailand"><div class="logo-card-name">Grab Thailand</div></div>
+      <div class="logo-card"><img src="images/logos/katsu%20bar.png" alt="Katsu Bar"><div class="logo-card-name">Katsu Bar</div></div>
+      <div class="logo-card"><img src="images/logos/sushi%20district.png" alt="Sushi District"><div class="logo-card-name">Sushi District</div></div>
+      <div class="logo-card"><img src="images/logos/bangkok%20soul.png" alt="Bangkok Soul"><div class="logo-card-name">Bangkok Soul</div></div>
+      <div class="logo-card"><img src="images/logos/infinityu.png" alt="Infinity U Wellness"><div class="logo-card-name">Infinity U Wellness</div></div>
+      <!-- set A repeated for seamless loop -->
+      <div class="logo-card"><img src="images/logos/tapatio.png" alt="Tapatio"><div class="logo-card-name">Tapatio</div></div>
+      <div class="logo-card"><img src="images/logos/chin-su.png" alt="Chin-Su"><div class="logo-card-name">Chin-Su</div></div>
+      <div class="logo-card"><img src="images/logos/universal%20yums.png" alt="Universal Yums"><div class="logo-card-name">Universal Yums</div></div>
+      <div class="logo-card"><img src="images/logos/aunara.png" alt="Aunara"><div class="logo-card-name">Aunara</div></div>
+      <div class="logo-card"><img src="images/logos/hironori.png" alt="HiroNori"><div class="logo-card-name">HiroNori</div></div>
+      <div class="logo-card"><img src="images/logos/eggbred.png" alt="EggBred"><div class="logo-card-name">EggBred</div></div>
+      <div class="logo-card"><img src="images/logos/broken-yolk.png" alt="Broken Yolk"><div class="logo-card-name">Broken Yolk</div></div>
+      <div class="logo-card"><img src="images/logos/hisense.png" alt="Hisense"><div class="logo-card-name">Hisense</div></div>
+      <div class="logo-card"><img src="images/logos/ez-bombs.png" alt="EZ Bombs"><div class="logo-card-name">EZ Bombs</div></div>
+      <div class="logo-card"><img src="images/logos/wagyu-factory.png" alt="Wagyu Factory"><div class="logo-card-name">Wagyu Factory</div></div>
+      <div class="logo-card"><img src="images/logos/ygf.png" alt="YGF Malatang"><div class="logo-card-name">YGF Malatang</div></div>
+      <div class="logo-card"><img src="images/logos/thainewyear.png" alt="Thai New Year LA"><div class="logo-card-name">Thai New Year LA</div></div>
+      <div class="logo-card"><img src="images/logos/royalthaiconsulate.png" alt="Royal Thai Consulate"><div class="logo-card-name">Royal Thai Consulate</div></div>
+      <div class="logo-card"><img src="images/logos/grab.webp" alt="Grab Thailand"><div class="logo-card-name">Grab Thailand</div></div>
+      <div class="logo-card"><img src="images/logos/katsu%20bar.png" alt="Katsu Bar"><div class="logo-card-name">Katsu Bar</div></div>
+      <div class="logo-card"><img src="images/logos/sushi%20district.png" alt="Sushi District"><div class="logo-card-name">Sushi District</div></div>
+      <div class="logo-card"><img src="images/logos/bangkok%20soul.png" alt="Bangkok Soul"><div class="logo-card-name">Bangkok Soul</div></div>
+      <div class="logo-card"><img src="images/logos/infinityu.png" alt="Infinity U Wellness"><div class="logo-card-name">Infinity U Wellness</div></div>
+    </div>
+  </div>
+
+  <!-- Row 2 — scrolls right -->
+  <div class="marquee-row">
+    <div class="marquee-inner marquee-rev">
+      <!-- set B -->
+      <div class="logo-card"><img src="images/logos/sks.png" alt="Signature Kitchen Suite"><div class="logo-card-name">Signature Kitchen Suite</div></div>
+      <div class="logo-card"><img src="images/logos/aunara.png" alt="Aunara"><div class="logo-card-name">Aunara</div></div>
+      <div class="logo-card"><img src="images/logos/naturemade.png" alt="Naturemade"><div class="logo-card-name">Naturemade</div></div>
+      <div class="logo-card"><img src="images/logos/tapatio.png" alt="Tapatio"><div class="logo-card-name">Tapatio</div></div>
+      <div class="logo-card"><img src="images/logos/remington.png" alt="Remington"><div class="logo-card-name">Remington</div></div>
+      <div class="logo-card"><img src="images/logos/chin-su.png" alt="Chin-Su"><div class="logo-card-name">Chin-Su</div></div>
+      <div class="logo-card"><img src="images/logos/ev%20powermilk.png" alt="EV Power Milk"><div class="logo-card-name">EV Power Milk</div></div>
+      <div class="logo-card"><img src="images/logos/universal%20yums.png" alt="Universal Yums"><div class="logo-card-name">Universal Yums</div></div>
+      <div class="logo-card"><img src="images/logos/mumu-hotpot.png" alt="Mumu Hotpot"><div class="logo-card-name">Mumu Hotpot</div></div>
+      <div class="logo-card"><img src="images/logos/rol-bar.png" alt="ROL Bar"><div class="logo-card-name">ROL Bar</div></div>
+      <div class="logo-card"><img src="images/logos/chubby-mart.png" alt="Chubby Mart"><div class="logo-card-name">Chubby Mart</div></div>
+      <div class="logo-card"><img src="images/logos/haidilao.png" alt="Haidilao"><div class="logo-card-name">Haidilao</div></div>
+      <div class="logo-card"><img src="images/logos/nam%20kitchen.png" alt="Nam Kitchen"><div class="logo-card-name">Nam Kitchen</div></div>
+      <div class="logo-card"><img src="images/logos/charliestea.png" alt="Charlie's Tea"><div class="logo-card-name">Charlie's Tea</div></div>
+      <div class="logo-card"><img src="images/logos/sukiya.png" alt="Sukiya Sushi"><div class="logo-card-name">Sukiya Sushi</div></div>
+      <div class="logo-card"><img src="images/logos/katsu%20bar.png" alt="Katsu Bar"><div class="logo-card-name">Katsu Bar</div></div>
+      <div class="logo-card"><img src="images/logos/infinityu.png" alt="Infinity U Wellness"><div class="logo-card-name">Infinity U Wellness</div></div>
+      <!-- set B repeated -->
+      <div class="logo-card"><img src="images/logos/sks.png" alt="Signature Kitchen Suite"><div class="logo-card-name">Signature Kitchen Suite</div></div>
+      <div class="logo-card"><img src="images/logos/aunara.png" alt="Aunara"><div class="logo-card-name">Aunara</div></div>
+      <div class="logo-card"><img src="images/logos/naturemade.png" alt="Naturemade"><div class="logo-card-name">Naturemade</div></div>
+      <div class="logo-card"><img src="images/logos/tapatio.png" alt="Tapatio"><div class="logo-card-name">Tapatio</div></div>
+      <div class="logo-card"><img src="images/logos/remington.png" alt="Remington"><div class="logo-card-name">Remington</div></div>
+      <div class="logo-card"><img src="images/logos/chin-su.png" alt="Chin-Su"><div class="logo-card-name">Chin-Su</div></div>
+      <div class="logo-card"><img src="images/logos/ev%20powermilk.png" alt="EV Power Milk"><div class="logo-card-name">EV Power Milk</div></div>
+      <div class="logo-card"><img src="images/logos/universal%20yums.png" alt="Universal Yums"><div class="logo-card-name">Universal Yums</div></div>
+      <div class="logo-card"><img src="images/logos/mumu-hotpot.png" alt="Mumu Hotpot"><div class="logo-card-name">Mumu Hotpot</div></div>
+      <div class="logo-card"><img src="images/logos/rol-bar.png" alt="ROL Bar"><div class="logo-card-name">ROL Bar</div></div>
+      <div class="logo-card"><img src="images/logos/chubby-mart.png" alt="Chubby Mart"><div class="logo-card-name">Chubby Mart</div></div>
+      <div class="logo-card"><img src="images/logos/haidilao.png" alt="Haidilao"><div class="logo-card-name">Haidilao</div></div>
+      <div class="logo-card"><img src="images/logos/nam%20kitchen.png" alt="Nam Kitchen"><div class="logo-card-name">Nam Kitchen</div></div>
+      <div class="logo-card"><img src="images/logos/charliestea.png" alt="Charlie's Tea"><div class="logo-card-name">Charlie's Tea</div></div>
+      <div class="logo-card"><img src="images/logos/sukiya.png" alt="Sukiya Sushi"><div class="logo-card-name">Sukiya Sushi</div></div>
+      <div class="logo-card"><img src="images/logos/katsu%20bar.png" alt="Katsu Bar"><div class="logo-card-name">Katsu Bar</div></div>
+      <div class="logo-card"><img src="images/logos/infinityu.png" alt="Infinity U Wellness"><div class="logo-card-name">Infinity U Wellness</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══════════════════════════════════════════ -->
+<section class="testi-section">
+  <div class="section-label">What Brands Say</div>
+  <h2 class="section-title fade-up">Real Results.<br>Real Reviews.</h2>
+
+  <div class="testi-cards-row fade-up">
+    <div class="testi-img-card">
+      <div class="testi-stars">★★★★★</div>
+      <img src="images/pjk-testimonial01.jpg" alt="Testimonial" class="testi-screenshot">
+    </div>
+    <div class="testi-img-card">
+      <div class="testi-stars">★★★★★</div>
+      <img src="images/pjk-testimonial02.jpg" alt="Testimonial" class="testi-screenshot">
+    </div>
+  </div>
+
+  <!-- Top Performer bar -->
+  <div class="testi-performer fade-up">
+    <div class="testi-perf-info">
+      <div class="testi-perf-label">Top Performer</div>
+      <div class="testi-perf-name">Chin-Su</div>
+      <div class="testi-perf-loc">Brand Partnership</div>
+    </div>
+    <div class="testi-perf-stats">
+      <div class="testi-perf-stat">
+        <div class="testi-perf-num">2.1M</div>
+        <div class="testi-perf-lbl">Views</div>
+      </div>
+      <div class="testi-perf-stat">
+        <div class="testi-perf-num">48K</div>
+        <div class="testi-perf-lbl">Likes</div>
+      </div>
+      <div class="testi-perf-stat">
+        <div class="testi-perf-num">1.2K</div>
+        <div class="testi-perf-lbl">Comments</div>
+      </div>
+      <div class="testi-perf-stat">
+        <div class="testi-perf-num">9.4K</div>
+        <div class="testi-perf-lbl">Saves</div>
+      </div>
+      <div class="testi-perf-stat">
+        <div class="testi-perf-num">31K</div>
+        <div class="testi-perf-lbl">Shares</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIGHTS ══════════════════════════════════════════════ -->
+<section class="insights-section">
+  <div class="section-label">By the Numbers</div>
+  <h2 class="section-title fade-up">30-Day Insights.</h2>
+  <p class="insights-period">TikTok + Instagram · Combined across all accounts</p>
+
+  <div class="insights-chart fade-up" id="insightsChart">
+    <div class="chart-bar-track"><div class="chart-bar"></div></div>
+    <div class="chart-bar-meta">
+      <div class="chart-lbl">Combined 30-day views</div>
+      <div class="chart-val">3M+</div>
+    </div>
+  </div>
+
+  <div class="insights-grid fade-up">
+    <div class="insight-card">
+      <div class="insight-icon">👁</div>
+      <div class="insight-num">3M+</div>
+      <div class="insight-label">Total Views</div>
+      <div class="insight-sub">TikTok 1.4M · IG 757K · IG 834K</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon">💬</div>
+      <div class="insight-num">140K+</div>
+      <div class="insight-label">Total Engagements</div>
+      <div class="insight-sub">Likes, comments, saves &amp; shares</div>
+    </div>
+  </div>
+
+  <div class="insights-sources fade-up">
+    <span class="insight-source-tag">TikTok · @skeeteats</span>
+    <span class="insight-source-tag">Instagram · @parjanttt.k</span>
+    <span class="insight-source-tag">Instagram · @skeeteats_</span>
+  </div>
+</section>
+
+<!-- ══ BRANDS ════════════════════════════════════════════════ -->
+<section class="brands-section" id="brands">
+  <div class="section-label">Featured Work</div>
+  <h2 class="section-title fade-up">Brands</h2>
+  <div class="video-scroll-wrap fade-up">
+    <button class="scroll-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="video-grid">
+      <div class="video-card"><video src="videos/brands-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">Universal Yums</div></div></div>
+      <div class="video-card"><video src="videos/brands-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">Chin-Su</div></div></div>
+      <div class="video-card"><video src="videos/brands-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">EZ Bombs</div></div></div>
+      <div class="video-card"><video src="videos/brands-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">Grab Thailand</div></div></div>
+      <div class="video-card"><video src="videos/brands-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">Universal Yums</div></div></div>
+      <div class="video-card"><video src="videos/brands-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">Chin-Su</div></div></div>
+      <div class="video-card"><video src="videos/brands-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">EZ Bombs</div></div></div>
+      <div class="video-card"><video src="videos/brands-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Brand</div><div class="card-info"><div class="card-label">Grab Thailand</div></div></div>
+    </div>
+    <button class="scroll-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ══ LIFESTYLE ══════════════════════════════════════════════ -->
+<section class="lifestyle-section" id="lifestyle">
+  <div class="section-label">Organic Content</div>
+  <h2 class="section-title fade-up">Lifestyle</h2>
+  <div class="video-scroll-wrap fade-up">
+    <button class="scroll-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="video-grid">
+      <div class="video-card"><video src="videos/lifestyle-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">1.5M</div><div class="card-label">Day to Day</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">1.3M</div><div class="card-label">Recipe Demos</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">890K</div><div class="card-label">Lifestyle Placements</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">250K</div><div class="card-label">Lifestyle Placements</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">1.5M</div><div class="card-label">Day to Day</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">1.3M</div><div class="card-label">Recipe Demos</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">890K</div><div class="card-label">Lifestyle Placements</div></div></div>
+      <div class="video-card"><video src="videos/lifestyle-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-views">250K</div><div class="card-label">Lifestyle Placements</div></div></div>
+    </div>
+    <button class="scroll-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ══ PRODUCT REVIEWS ════════════════════════════════════════ -->
+<section class="product-section" id="products">
+  <div class="section-label">Sponsored</div>
+  <h2 class="section-title fade-up">Product Reviews</h2>
+  <div class="video-scroll-wrap fade-up">
+    <button class="scroll-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="video-grid">
+      <div class="video-card"><video src="videos/product-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">Signature Kitchen Suite</div></div></div>
+      <div class="video-card"><video src="videos/product-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">EV Power Milk</div></div></div>
+      <div class="video-card"><video src="videos/product-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">Remington</div></div></div>
+      <div class="video-card"><video src="videos/product-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">Naturemade</div></div></div>
+      <div class="video-card"><video src="videos/product-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">Signature Kitchen Suite</div></div></div>
+      <div class="video-card"><video src="videos/product-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">EV Power Milk</div></div></div>
+      <div class="video-card"><video src="videos/product-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">Remington</div></div></div>
+      <div class="video-card"><video src="videos/product-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Product</div><div class="card-info"><div class="card-label">Naturemade</div></div></div>
+    </div>
+    <button class="scroll-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ══ FOOD REVIEWS ═══════════════════════════════════════════ -->
+<section class="food-section" id="food">
+  <div class="section-label">Restaurant Content</div>
+  <h2 class="section-title fade-up">Food Reviews</h2>
+  <div class="video-scroll-wrap fade-up">
+    <button class="scroll-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="video-grid">
+      <div class="video-card"><video src="videos/food-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Silk Thai Cuisine</div></div></div>
+      <div class="video-card"><video src="videos/food-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Sake 2 Me</div></div></div>
+      <div class="video-card"><video src="videos/food-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">I Got My Sound Chicken</div></div></div>
+      <div class="video-card"><video src="videos/food-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Fantasy Lobster House</div></div></div>
+      <div class="video-card"><video src="videos/food-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Silk Thai Cuisine</div></div></div>
+      <div class="video-card"><video src="videos/food-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Sake 2 Me</div></div></div>
+      <div class="video-card"><video src="videos/food-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">I Got My Sound Chicken</div></div></div>
+      <div class="video-card"><video src="videos/food-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Fantasy Lobster House</div></div></div>
+    </div>
+    <button class="scroll-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ══ EVENTS ═════════════════════════════════════════════════ -->
+<section class="events-section" id="events">
+  <div class="section-label">Live Coverage</div>
+  <h2 class="section-title fade-up">Events</h2>
+  <div class="video-scroll-wrap fade-up">
+    <button class="scroll-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="video-grid">
+      <div class="video-card"><video src="videos/events-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">Thai New Year Festival</div></div></div>
+      <div class="video-card"><video src="videos/events-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">DS Night Market</div></div></div>
+      <div class="video-card"><video src="videos/events-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">626 Night Market</div></div></div>
+      <div class="video-card"><video src="videos/events-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">Thai Fest Santa Monica</div></div></div>
+      <div class="video-card"><video src="videos/events-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">Thai New Year Festival</div></div></div>
+      <div class="video-card"><video src="videos/events-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">DS Night Market</div></div></div>
+      <div class="video-card"><video src="videos/events-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">626 Night Market</div></div></div>
+      <div class="video-card"><video src="videos/events-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-badge">Event</div><div class="card-info"><div class="card-label">Thai Fest Santa Monica</div></div></div>
+    </div>
+    <button class="scroll-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ══ SERVICE FEATURES ═══════════════════════════════════════ -->
+<section class="service-section" id="services">
+  <div class="section-label">Beyond Food</div>
+  <h2 class="section-title fade-up">Service Features</h2>
+  <div class="video-scroll-wrap fade-up">
+    <button class="scroll-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="video-grid">
+      <div class="video-card"><video src="videos/service-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Aunara Med Spa</div></div></div>
+      <div class="video-card"><video src="videos/service-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Off &amp; Relax Head Spa</div></div></div>
+      <div class="video-card"><video src="videos/service-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Hora Hair Clinic</div></div></div>
+      <div class="video-card"><video src="videos/service-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Infinity-U HB Clinic</div></div></div>
+      <div class="video-card"><video src="videos/service-1.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Aunara Med Spa</div></div></div>
+      <div class="video-card"><video src="videos/service-2.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Off &amp; Relax Head Spa</div></div></div>
+      <div class="video-card"><video src="videos/service-3.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Hora Hair Clinic</div></div></div>
+      <div class="video-card"><video src="videos/service-4.mp4" muted loop playsinline preload="metadata"></video><div class="card-overlay"></div><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="card-info"><div class="card-label">Infinity-U HB Clinic</div></div></div>
+    </div>
+    <button class="scroll-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ══ MAP ════════════════════════════════════════════════════ -->
+<section class="map-section" id="map">
+  <div class="section-label">Where We've Been</div>
+  <h2 class="section-title fade-up">Who We've<br>Worked With.</h2>
+  <p style="font-size:.85rem;color:rgba(255,255,255,.55);margin-bottom:1.75rem;">Restaurants &amp; brands across LA, Orange County, Tokyo &amp; Bangkok</p>
+  <div id="restaurant-map"></div>
+  <div class="map-legend">
+    <span><span class="legend-dot" style="background:#fff;"></span>LA &amp; OC</span>
+    <span><span class="legend-dot" style="background:#ffd700;"></span>International</span>
+  </div>
+  <div class="tag-list">
+    <span class="tag">HiroNori Ramen</span>
+    <span class="tag">Krata Thai</span>
+    <span class="tag">Juicy Dumpling Factory</span>
+    <span class="tag">Fuji Shabu</span>
+    <span class="tag">Sake2me Tustin</span>
+    <span class="tag">Thai This</span>
+    <span class="tag">Silk Thai Cuisine</span>
+    <span class="tag">Zait and Zaatar</span>
+    <span class="tag">YGF Malatang</span>
+    <span class="tag">Mumu Hotpot</span>
+    <span class="tag">Woomioak Korean</span>
+    <span class="tag">949 Grill Lounge</span>
+    <span class="tag">Eat's Sushi</span>
+    <span class="tag">Fantacy Lobster House</span>
+    <span class="tag">EggBred Seal Beach</span>
+    <span class="tag">Pink10 OC</span>
+    <span class="tag">Wow Cow KBBQ</span>
+    <span class="tag">Sona Fusion Kitchen</span>
+    <span class="tag">Nam Kitchen</span>
+    <span class="tag">I Got My Sound Fried Chicken</span>
+    <span class="tag">Oncemore Chinese</span>
+    <span class="tag">Pinchy &amp; Pals</span>
+    <span class="tag">Tamagotchi Coffee</span>
+    <span class="tag">Pho REDBO</span>
+    <span class="tag">Sanamluang Cafe</span>
+    <span class="tag">Greenlife Fit Foods</span>
+    <span class="tag">ROL Bar</span>
+    <span class="tag">356 Korean BBQ</span>
+    <span class="tag">Sake2me AYCE</span>
+    <span class="tag">Sip Restaurant &amp; Coffee</span>
+    <span class="tag">626 Night Market</span>
+    <span class="tag">Katsu Bar</span>
+    <span class="tag">P'Mint Kin Thai</span>
+    <span class="tag">Bag O Crab</span>
+    <span class="tag">Sushi District</span>
+    <span class="tag">Avenue Shabu</span>
+    <span class="tag">Aloha Hawaiian BBQ</span>
+    <span class="tag">Chubby Mart</span>
+    <span class="tag">M-Joy Modern</span>
+    <span class="tag">MUN Korean Steakhouse</span>
+    <span class="tag">Charlie's Tea Little Tokyo</span>
+    <span class="tag">Fish With You</span>
+    <span class="tag">Thai Favorite Cuisine</span>
+    <span class="tag">C2M Coffee</span>
+    <span class="tag">Crispy Pork Station</span>
+    <span class="tag">Haidilao Hot Pot</span>
+    <span class="tag">Juicy Hotpot</span>
+    <span class="tag">Fantastic Cafe</span>
+    <span class="tag">Wagyu Factory</span>
+    <span class="tag">Yum Dumpling</span>
+    <span class="tag">Eastern Tales Cafe</span>
+    <span class="tag">Bangkok Soul</span>
+    <span class="tag">Dumpling Wei</span>
+    <span class="tag">101 Night Market</span>
+    <span class="tag">Sichuan Impression</span>
+    <span class="tag">Ponzu Japanese Sushi</span>
+    <span class="tag">Broken Yolk Cafe</span>
+    <span class="tag">NOVA Kitchen &amp; Bar</span>
+    <span class="tag">Chin-Su Hot Sauce</span>
+    <span class="tag">EggBred Tustin</span>
+    <span class="tag">13 de Marzo</span>
+    <span class="tag">MooMoo Hot Pot</span>
+    <span class="tag">Mo Ran Gak</span>
+    <span class="tag">Jincook Little Tokyo</span>
+    <span class="tag">Sukiya Sushi Buffet</span>
+    <span class="tag">Dine Thai LA</span>
+    <span class="tag">Chung Dam Korean BBQ</span>
+    <span class="tag">Aura Sushi and Hot Pot</span>
+    <span class="tag">Gala Bangkok 🇹🇭</span>
+    <span class="tag">Tonkatsu Nagi 🇯🇵</span>
+    <span class="tag">Cloud Club Matcha 🇯🇵</span>
+    <span class="tag">Umi Matcha 🇯🇵</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Social</h4>
+      <a href="https://facebook.com/Parisiiz" target="_blank">FB · @Parisiiz · 71K</a>
+      <a href="https://instagram.com/parjanttt" target="_blank">IG · @parjanttt · 5K+</a>
+      <a href="https://instagram.com/parjanttt.k" target="_blank">IG · @parjanttt.k · 19.5K</a>
+      <a href="https://instagram.com/skeeteats_" target="_blank">IG · @skeeteats_</a>
+      <a href="https://www.facebook.com/p/Skeeteats-61593022088974/" target="_blank">FB · Skeeteats</a>
+      <a href="https://www.tiktok.com/@skeeteats" target="_blank">TT · @skeeteats</a>
+    </div>
+    <div class="footer-col">
+      <h4>Location</h4>
+      <p>Los Angeles &amp; Orange County</p>
+      <p>Available for brand trips</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:skxxt1@gmail.com">skxxt1@gmail.com</a>
+      <p>DM for rates &amp; media kit</p>
+      <p>Reels · TikTok · Shorts</p>
+    </div>
+    <div class="footer-col">
+      <h4>Work With Us</h4>
+      <form class="footer-form" name="inquiry" netlify netlify-honeypot="bot-field" onsubmit="handleInquiry(event)">
+        <input type="hidden" name="form-name" value="inquiry">
+        <p hidden><input name="bot-field"></p>
+        <div class="footer-form-row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <input type="text" name="brand" placeholder="Brand / Restaurant name">
+        <textarea name="message" placeholder="Tell us about your campaign, budget, and timeline…"></textarea>
+        <button type="submit" class="footer-form-btn">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bleed">See You at the Table!</div>
+</footer>
+
+<script>
+// ── Enable animations now that JS is confirmed running ────────
+document.body.classList.add('js-ready');
+
+// ── Viewport-triggered deblur + autoplay ─────────────────────
+const videoObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    const vid = e.target.querySelector('video');
+    if (!vid) return;
+    if (e.isIntersecting) {
+      vid.play().catch(() => {});
+      e.target.classList.add('in-view');
+    } else {
+      vid.pause();
+      e.target.classList.remove('in-view');
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('.video-card').forEach(card => {
+  videoObserver.observe(card);
+});
+
+// ── Video mute / fullscreen controls ─────────────
+const mutedSVG = `<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
+const unmutedSVG = `<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+const fsSVG = `<svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+
+document.querySelectorAll('.video-card').forEach(card => {
+  const video = card.querySelector('video');
+  if (!video) return;
+
+  const btns = document.createElement('div');
+  btns.className = 'vid-ctrl-btns';
+
+  const muteBtn = document.createElement('button');
+  muteBtn.className = 'vid-ctrl-btn mute-btn';
+  muteBtn.setAttribute('aria-label', 'Toggle mute');
+  muteBtn.innerHTML = mutedSVG;
+
+  const fsBtn = document.createElement('button');
+  fsBtn.className = 'vid-ctrl-btn fs-btn';
+  fsBtn.setAttribute('aria-label', 'Fullscreen');
+  fsBtn.innerHTML = fsSVG;
+
+  btns.append(muteBtn, fsBtn);
+  card.append(btns);
+
+  muteBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (video.muted) {
+      document.querySelectorAll('.video-card .mute-btn').forEach(btn => {
+        const v = btn.closest('.video-card').querySelector('video');
+        if (v && !v.muted) { v.muted = true; btn.classList.remove('unmuted'); btn.innerHTML = mutedSVG; }
+      });
+      video.muted = false;
+      muteBtn.classList.add('unmuted');
+      muteBtn.innerHTML = unmutedSVG;
+    } else {
+      video.muted = true;
+      muteBtn.classList.remove('unmuted');
+      muteBtn.innerHTML = mutedSVG;
+    }
+  });
+
+  fsBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const fn = card.requestFullscreen || card.webkitRequestFullscreen || card.mozRequestFullScreen || card.msRequestFullscreen;
+    if (fn) fn.call(card);
+  });
+});
+
+// ── Gallery scroll arrows ────────────────────────────────────
+document.querySelectorAll('.video-scroll-wrap').forEach(wrap => {
+  const grid = wrap.querySelector('.video-grid');
+  const prev = wrap.querySelector('.scroll-btn.prev');
+  const next = wrap.querySelector('.scroll-btn.next');
+  const amt = () => grid.clientWidth * 0.75;
+  prev.addEventListener('click', () => grid.scrollBy({ left: -amt(), behavior: 'smooth' }));
+  next.addEventListener('click', () => grid.scrollBy({ left:  amt(), behavior: 'smooth' }));
+  const sync = () => {
+    prev.style.opacity = grid.scrollLeft > 8 ? '1' : '0.3';
+    next.style.opacity = grid.scrollLeft < grid.scrollWidth - grid.clientWidth - 8 ? '1' : '0.3';
+  };
+  grid.addEventListener('scroll', sync, { passive: true });
+  sync();
+});
+
+// ── Scroll fade-up ───────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── Insights bar chart ───────────────────────────────────────
+const chartEl = document.getElementById('insightsChart');
+if (chartEl) {
+  const chartObserver = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      chartEl.classList.add('animated');
+      chartObserver.disconnect();
+    }
+  }, { threshold: 0.4 });
+  chartObserver.observe(chartEl);
+}
+
+// ── Leaflet map ──────────────────────────────────────────────
+try {
+const map = L.map('restaurant-map', {
+  center: [20, 160], zoom: 2, scrollWheelZoom: false, attributionControl: false
+});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { subdomains: 'abc', maxZoom: 19 }).addTo(map);
+
+const local = [
+  { name: 'HiroNori Craft Ramen',       city: 'Tustin, OC',            lat: 33.7432, lng: -117.8219 },
+  { name: 'Krata Thai Food',            city: 'Harbor City, LA',        lat: 33.7952, lng: -118.3111 },
+  { name: 'Juicy Dumpling Factory',     city: 'Huntington Beach, OC',   lat: 33.7220, lng: -118.0020 },
+  { name: 'Fuji Shabu',                 city: 'San Gabriel, LA',         lat: 34.0942, lng: -118.0934 },
+  { name: 'Sake2me Sushi',              city: 'Tustin, OC',              lat: 33.7439, lng: -117.8218 },
+  { name: 'Thai This',                  city: 'Dana Point, OC',          lat: 33.4723, lng: -117.6986 },
+  { name: 'Silk Thai Cuisine',          city: 'Huntington Beach, OC',    lat: 33.6813, lng: -117.9943 },
+  { name: 'Zait and Zaatar',            city: 'Anaheim, OC',             lat: 33.8396, lng: -117.9408 },
+  { name: 'YGF Malatang',               city: 'Chino Hills, LA',         lat: 33.9818, lng: -117.7427 },
+  { name: 'Mumu Hotpot',                city: 'Torrance, LA',            lat: 33.8306, lng: -118.3320 },
+  { name: 'Woomioak Korean',            city: 'Hawaiian Gardens, LA',    lat: 33.8344, lng: -118.0729 },
+  { name: 'Press Conference Thai Town', city: 'Los Angeles, LA',         lat: 34.1011, lng: -118.3034 },
+  { name: '949 Grill Lounge',           city: 'Santa Ana, OC',           lat: 33.6553, lng: -117.8523 },
+  { name: "Eat's Sushi",                city: 'Costa Mesa, OC',          lat: 33.6849, lng: -117.9076 },
+  { name: 'Fantacy Lobster House',      city: 'Foothill Ranch, OC',      lat: 33.6784, lng: -117.6812 },
+  { name: 'EggBred',                    city: 'Seal Beach, OC',          lat: 33.7781, lng: -118.0943 },
+  { name: 'Pink10 OC',                  city: 'Westminster, OC',         lat: 33.7491, lng: -117.9930 },
+  { name: 'Wow Cow KBBQ',               city: 'El Monte, LA',            lat: 34.0742, lng: -118.0283 },
+  { name: 'Sona Fusion Kitchen',        city: 'Anaheim, OC',             lat: 33.8182, lng: -117.9104 },
+  { name: 'Nam Kitchen',                city: 'Gardena, LA',             lat: 33.8878, lng: -118.3098 },
+  { name: 'I Got My Sound Fried Chicken', city: 'Fullerton, OC',         lat: 33.8612, lng: -117.9087 },
+  { name: 'Oncemore Chinese',           city: 'Los Angeles, LA',         lat: 34.0522, lng: -118.2437 },
+  { name: 'Pinchy & Pals',              city: 'Tustin, OC',              lat: 33.7453, lng: -117.7975 },
+  { name: 'Tamagotchi Coffee',          city: 'Los Angeles, LA',         lat: 34.0702, lng: -118.3773 },
+  { name: 'Pho REDBO',                  city: 'Westminster, OC',         lat: 33.7572, lng: -117.9936 },
+  { name: 'Sanamluang Cafe',            city: 'Los Angeles, LA',         lat: 34.1011, lng: -118.3030 },
+  { name: 'Greenlife Fit Foods',        city: 'Irvine, OC',              lat: 33.6749, lng: -117.8637 },
+  { name: 'ROL Bar',                    city: 'Los Angeles, LA',         lat: 34.0534, lng: -118.2427 },
+  { name: '356 Korean BBQ & Bar',       city: 'Brea, OC',                lat: 33.9257, lng: -117.8832 },
+  { name: 'Sake2me AYCE',               city: 'Tustin, OC',              lat: 33.7453, lng: -117.8239 },
+  { name: 'Sip Restaurant & Coffee',    city: 'Westminster, OC',         lat: 33.7488, lng: -117.9925 },
+  { name: '626 Night Market',           city: 'Costa Mesa, OC',          lat: 33.6821, lng: -117.9003 },
+  { name: 'Katsu Bar',                  city: 'Irvine, OC',              lat: 33.6901, lng: -117.7987 },
+  { name: "P'Mint Kin Thai",            city: 'Los Angeles, LA',         lat: 34.0695, lng: -118.3049 },
+  { name: 'Bag O Crab',                 city: 'Fullerton, OC',           lat: 33.8590, lng: -117.9274 },
+  { name: 'Sushi District',             city: 'Costa Mesa, OC',          lat: 33.6605, lng: -117.9138 },
+  { name: 'Avenue Shabu',               city: 'Huntington Beach, OC',    lat: 33.7222, lng: -117.9873 },
+  { name: 'Aloha Hawaiian BBQ',         city: 'Buena Park, OC',          lat: 33.8659, lng: -117.9988 },
+  { name: 'Chubby Mart',                city: 'Rowland Heights, LA',     lat: 33.9762, lng: -117.8906 },
+  { name: 'M-Joy Modern',               city: 'Irvine, OC',              lat: 33.6677, lng: -117.8398 },
+  { name: 'MUN Korean Steakhouse',      city: 'Los Angeles, LA',         lat: 34.0625, lng: -118.2881 },
+  { name: "Charlie's Tea Little Tokyo", city: 'Los Angeles, LA',         lat: 34.0508, lng: -118.2421 },
+  { name: 'Fish With You',              city: 'Irvine, OC',              lat: 33.6675, lng: -117.8395 },
+  { name: 'Thai Favorite Cuisine',      city: 'Tustin, OC',              lat: 33.7437, lng: -117.8228 },
+  { name: 'C2M Coffee',                 city: 'Koreatown, LA',           lat: 34.0594, lng: -118.3022 },
+  { name: 'Crispy Pork Station',        city: 'Panorama City, LA',       lat: 34.2253, lng: -118.4457 },
+  { name: 'Haidilao Hot Pot',           city: 'Irvine, OC',              lat: 33.6702, lng: -117.8503 },
+  { name: 'Juicy Hotpot',               city: 'San Gabriel, LA',         lat: 34.0940, lng: -118.0930 },
+  { name: 'Fantastic Cafe',             city: 'Cerritos, LA',            lat: 33.8643, lng: -118.0712 },
+  { name: 'Wagyu Factory',              city: 'Brea, OC',                lat: 33.9265, lng: -117.8997 },
+  { name: "Toast'd",                    city: 'Los Angeles, LA',         lat: 34.0522, lng: -118.2440 },
+  { name: 'Yum Dumpling',               city: 'Orange, OC',              lat: 33.7888, lng: -117.8136 },
+  { name: 'Eastern Tales Cafe',         city: 'Fountain Valley, OC',     lat: 33.7156, lng: -117.9563 },
+  { name: 'Narwahl',                    city: 'Huntington Beach, OC',    lat: 33.6595, lng: -117.9985 },
+  { name: 'Bangkok Soul',               city: 'Alhambra, LA',            lat: 34.0933, lng: -118.1269 },
+  { name: 'Dumpling Wei',               city: 'Los Angeles, LA',         lat: 34.0455, lng: -118.4626 },
+  { name: '101 Night Market',           city: 'Van Nuys, LA',            lat: 34.1952, lng: -118.4564 },
+  { name: 'Sichuan Impression',         city: 'Tustin, OC',              lat: 33.7542, lng: -117.8259 },
+  { name: 'Ponzu Japanese Sushi',       city: 'Santa Ana, OC',           lat: 33.7248, lng: -117.8873 },
+  { name: 'Mae Malai',                  city: 'Los Angeles, LA',         lat: 34.0512, lng: -118.2434 },
+  { name: 'Perfect Pint Ice Cream',     city: 'Los Angeles, LA',         lat: 34.0530, lng: -118.2410 },
+  { name: 'Broken Yolk Cafe',           city: 'Irvine, OC',              lat: 33.6621, lng: -117.7934 },
+  { name: 'NOVA Kitchen & Bar',         city: 'Garden Grove, OC',        lat: 33.7745, lng: -117.8754 },
+  { name: 'EggBred Tustin',             city: 'Tustin, OC',              lat: 33.7433, lng: -117.8222 },
+  { name: '13 de Marzo',                city: 'Irvine, OC',              lat: 33.6561, lng: -117.8272 },
+  { name: 'MooMoo Hot Pot',             city: 'Irvine, OC',              lat: 33.7100, lng: -117.7981 },
+  { name: 'Mo Ran Gak',                 city: 'Fullerton, OC',           lat: 33.8724, lng: -117.9388 },
+  { name: 'Jincook Little Tokyo',       city: 'Los Angeles, LA',         lat: 34.0505, lng: -118.2418 },
+  { name: 'Sukiya Sushi Buffet',        city: 'Costa Mesa, OC',          lat: 33.6767, lng: -117.9151 },
+  { name: 'Dine Thai LA',               city: 'Los Angeles, LA',         lat: 34.0830, lng: -118.3162 },
+  { name: 'Chung Dam Korean BBQ',       city: 'Garden Grove, OC',        lat: 33.7736, lng: -117.9612 },
+  { name: 'Aura Sushi and Hot Pot',     city: 'Huntington Beach, OC',    lat: 33.7224, lng: -118.0009 },
+];
+const intl = [
+  { name: 'Gala Bangkok',      city: 'Bangkok 🇹🇭',    lat: 13.7221, lng: 100.5856 },
+  { name: 'Tonkatsu Nagi',     city: 'Tokyo 🇯🇵',      lat: 35.6617, lng: 139.6993 },
+  { name: 'Cloud Club Matcha', city: 'Tokyo 🇯🇵',      lat: 35.6712, lng: 139.7649 },
+  { name: 'Umi Matcha',        city: 'Tokyo 🇯🇵',      lat: 35.6700, lng: 139.7630 },
+];
+
+const popup = (n, c) => `<b style="font-family:Anton,sans-serif;color:#F04A00">${n}</b><br><span style="font-size:.75rem;color:#888">${c}</span>`;
+const lS = { radius: 8, fillColor: '#fff', color: '#F04A00', weight: 2, opacity: 1, fillOpacity: .9 };
+const iS = { radius: 8, fillColor: '#ffd700', color: '#333', weight: 2, opacity: 1, fillOpacity: .9 };
+
+local.forEach(r => L.circleMarker([r.lat, r.lng + 360], lS).bindPopup(popup(r.name, r.city)).addTo(map));
+intl.forEach(r  => L.circleMarker([r.lat, r.lng],       iS).bindPopup(popup(r.name, r.city)).addTo(map));
+} catch(e) { document.getElementById('restaurant-map').style.cssText='height:80px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:.8rem'; document.getElementById('restaurant-map').textContent='Map requires internet connection'; }
+
+function handleInquiry(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.footer-form-btn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(() => {
+    btn.textContent = 'Sent! ✓';
+    form.reset();
+    setTimeout(() => { btn.textContent = 'Send Inquiry'; btn.disabled = false; }, 4000);
+  })
+  .catch(() => {
+    btn.textContent = 'Error — try again';
+    btn.disabled = false;
+    setTimeout(() => { btn.textContent = 'Send Inquiry'; }, 3000);
+  });
+}
+</script>
+</body>
+</html>
